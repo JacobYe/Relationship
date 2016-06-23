@@ -37,8 +37,8 @@ for k, v in wvDict.iteritems():
                     '\n', '\\n').replace('\r', '')
                 resJson = json.loads(resText)
                 resW2v = resJson.get("sentenceVector")
-                print resW2v
-                vf.write(str(resW2v) + "\n")
+                # print resW2v
+                vf.write(str(resW2v).strip('[').strip(']') + "\n")
 
 # wFile = "./csv/not_q.csv"
 # vFile = "./vec/not_q.vec"
