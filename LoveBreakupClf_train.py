@@ -3,53 +3,59 @@
 
 from keras.models import Sequential
 from keras.layers import Dense, Activation
+# import pickle
+# from sklearn.externals import joblib
+import h5py
 
 
-class LoveBreakupClf:
-    def __init__(self):
-        trainDict = {
-            './vec/NotA0622-4221.vec': 0,
-            './vec/Love0622-2100.vec': 1,
-            './vec/Breakup0622-2327.vec': 2
-        }
-        self.X_train = []
-        self.y_train = []
-        for k, v in trainDict.iteritems():
-            with open(k, 'r') as f:
-                for l in f:
-                    if l.strip() != '' and l.strip() != '\n':
-                        vec = []
-                        for x in l.split(','):
-                            vec.append(float(x))
-                        self.X_train.append(vec)
-                        self.y_train.append(v)
-        self.model = Sequential()
-        self.model.add(Dense(output_dim=64, input_dim=300))
-        self.model.add(Activation("relu"))
-        self.model.add(Dense(output_dim=64))
-        self.model.add(Activation("relu"))
-        self.model.add(Dense(output_dim=3))
-        self.model.add(Activation("softmax"))
-        self.model.compile(loss='categorical_crossentropy',
-                           optimizer='sgd',
-                           metrics=['accuracy'])
-        self.model.fit(self.X_train, self.y_train, nb_epoch=5, batch_size=32)
+def main():
+    # Load Dataset
+    trainDict = {
+        './vec/NotA0622-4221.vec': 0,
+        './vec/Love0622-2100.vec': 1,
+        './vec/Breakup0622-2327.vec': 2
+    }
+    testDict = {
+        './vec/Love0623-1251.vec': 1,
+        './vec/Breakup0623-1079.vec': 2
+    }
+    X_train, y_train = toArray(trainDict)
+    X_test, y_test = toArray(testDict)
+    # Build Model
+    clf = Sequential()
+    clf.add(Dense(output_dim=64, input_dim=300))
+    clf.add(Activation("relu"))
+    clf.add(Dense(output_dim=64))
+    clf.add(Activation("relu"))
+    clf.add(Dense(output_dim=3))
+    clf.add(Activation("softmax"))
+    clf.compile(loss='sparse_categorical_crossentropy',
+                optimizer='sgd',
+                metrics=['accuracy'])
+    clf.fit(X_train, y_train, batch_size=32, nb_epoch=10)
+    score = clf.evaluate(X_test, y_test, batch_size=32)
+    print score
+    clfJson = clf.to_json()
+    open('LoveBreakupClf.json', 'w').write(clfJson)
+    clf.save_weights('LoveBreakupClf.h5')
+    # mf = file('LoveBreakupClf.pkl', 'wb')
+    # pickle.dump(clf, mf, True)
+    # joblib.dump(clf, 'LoveBreakupClf.pkl')
 
-    def predict(self, vec):
-        X_test = [vec]
-        classes = self.model.predict_classes(X_test, batch_size=32)
-        return classes
 
+def toArray(aDict):
+    xList = []
+    yList = []
+    for k, v in aDict.iteritems():
+        with open(k, 'r') as f:
+            for l in f:
+                if l.strip() != '' and l.strip() != '\n':
+                    vec = []
+                    for x in l.split(','):
+                        vec.append(float(x))
+                    xList.append(vec)
+                    yList.append(v)
+    return (xList, yList)
 
 if __name__ == "__main__":
-    clf = LoveBreakupClf()
-    X_test = []
-    with open('./vec/Breakup0623-1070.vec', 'r') as f:
-        for l in f:
-            if l.strip() != '' and l.strip() != '\n':
-                vec = []
-                for x in l.split(','):
-                    vec.append(float(x))
-                X_test.append(vec)
-    for x in X_test:
-        print clf.predict(x)
+    main()
