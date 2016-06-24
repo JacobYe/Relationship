@@ -21,13 +21,20 @@ def main():
     X_test, y_test = toArray(testDict)
     # Build Model
     clf = Sequential()
+    # Layer 1
     clf.add(Dense(output_dim=128, input_dim=300, init='uniform'))
     clf.add(Activation("relu"))
+    # Layer 2
     clf.add(Dense(output_dim=128, init='uniform'))
     clf.add(Activation("relu"))
+    # Layer 3
+    clf.add(Dense(output_dim=128, init='uniform'))
+    clf.add(Activation("relu"))
+    # Layer 4
     clf.add(Dense(output_dim=64, init='uniform'))
     clf.add(Activation("relu"))
     clf.add(Dropout(0.5))
+    # Output Layer
     clf.add(Dense(output_dim=3, init='uniform'))
     clf.add(Activation("softmax"))
     clf.compile(loss='sparse_categorical_crossentropy',
