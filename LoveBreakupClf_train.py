@@ -3,9 +3,7 @@
 
 from keras.models import Sequential
 from keras.layers import Dense, Activation
-# import pickle
-# from sklearn.externals import joblib
-import h5py
+# import h5py
 
 
 def main():
@@ -23,9 +21,13 @@ def main():
     X_test, y_test = toArray(testDict)
     # Build Model
     clf = Sequential()
-    clf.add(Dense(output_dim=64, input_dim=300))
+    clf.add(Dense(output_dim=128, input_dim=300))
     clf.add(Activation("relu"))
-    clf.add(Dense(output_dim=64))
+    clf.add(Dense(output_dim=128))
+    clf.add(Activation("relu"))
+    clf.add(Dense(output_dim=128))
+    clf.add(Activation("relu"))
+    clf.add(Dense(output_dim=128))
     clf.add(Activation("relu"))
     clf.add(Dense(output_dim=3))
     clf.add(Activation("softmax"))
@@ -33,14 +35,11 @@ def main():
                 optimizer='sgd',
                 metrics=['accuracy'])
     clf.fit(X_train, y_train, batch_size=32, nb_epoch=10)
-    score = clf.evaluate(X_test, y_test, batch_size=32)
+    score = clf.evaluate(X_test, y_test, batch_size=32, verbose=1)
     print score
     clfJson = clf.to_json()
     open('LoveBreakupClf.json', 'w').write(clfJson)
-    clf.save_weights('LoveBreakupClf.h5')
-    # mf = file('LoveBreakupClf.pkl', 'wb')
-    # pickle.dump(clf, mf, True)
-    # joblib.dump(clf, 'LoveBreakupClf.pkl')
+    clf.save_weights('LoveBreakupClf.h5', overwrite=True)
 
 
 def toArray(aDict):

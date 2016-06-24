@@ -10,24 +10,25 @@ from keras.models import model_from_json
 
 def main():
     # Load test set
-    testList = {
-        './vec/Love0623-1251.vec',
-        './vec/Breakup0623-1079.vec'
-    }
+
+    testList = ['./vec/Love0623-1251.vec', './vec/Breakup0623-1079.vec']
     X_test = toArray(testList)
     # Load model
     # clf = pickle.load('LoveBreakupClf.pkl')
     # clf = joblib.load("LoveBreakupClf.pkl")
     clf = model_from_json(open('LoveBreakupClf.json').read())
     clf.load_weights('LoveBreakupClf.h5')
+    clf.compile(loss='sparse_categorical_crossentropy',
+                optimizer='sgd')
     prediction = clf.predict_classes(X_test, batch_size=32, verbose=1)
+    print prediction
     labels = generatePredict(prediction)
     print labels
 
 
 def toArray(aList):
     xList = []
-    for i in aList.iteritems():
+    for i in aList:
         with open(i, 'r') as f:
             for l in f:
                 if l.strip() != '' and l.strip() != '\n':
@@ -39,13 +40,15 @@ def toArray(aList):
 
 
 def generatePredict(aList):
-    for i in aList.iteritems():
+    labels = []
+    for i in aList:
         if i == 0:
-            return "无关"
+            labels.append("无关")
         elif i == 1:
-            return "恋爱中"
+            labels.append("恋爱中")
         elif i == 2:
-            return "失恋"
+            labels.append("失恋")
+    return labels
 
 if __name__ == "__main__":
     main()
