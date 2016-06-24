@@ -14,7 +14,7 @@ def main():
         './vec/Breakup0622-2327.vec': 2
     }
     testDict = {
-        './vec/Love0623-1251.vec': 1,
+        # './vec/Love0623-1251.vec': 1,
         './vec/Breakup0623-1079.vec': 2
     }
     X_train, y_train = toArray(trainDict)
