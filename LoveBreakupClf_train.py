@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from keras.models import Sequential
-from keras.layers import Dense, Activation
+from keras.layers import Dense, Activation, Dropout
 # import h5py
 
 
@@ -21,20 +21,19 @@ def main():
     X_test, y_test = toArray(testDict)
     # Build Model
     clf = Sequential()
-    clf.add(Dense(output_dim=128, input_dim=300))
+    clf.add(Dense(output_dim=128, input_dim=300, init='uniform'))
     clf.add(Activation("relu"))
-    clf.add(Dense(output_dim=128))
+    clf.add(Dense(output_dim=128, init='uniform'))
     clf.add(Activation("relu"))
-    clf.add(Dense(output_dim=128))
+    clf.add(Dense(output_dim=128, init='uniform'))
     clf.add(Activation("relu"))
-    clf.add(Dense(output_dim=128))
-    clf.add(Activation("relu"))
-    clf.add(Dense(output_dim=3))
+    clf.add(Dropout(0.5))
+    clf.add(Dense(output_dim=3, init='uniform'))
     clf.add(Activation("softmax"))
     clf.compile(loss='sparse_categorical_crossentropy',
                 optimizer='sgd',
                 metrics=['accuracy'])
-    clf.fit(X_train, y_train, batch_size=32, nb_epoch=10)
+    clf.fit(X_train, y_train, batch_size=32, nb_epoch=50)
     score = clf.evaluate(X_test, y_test, batch_size=32, verbose=1)
     print score
     clfJson = clf.to_json()

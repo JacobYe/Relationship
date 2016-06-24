@@ -8,14 +8,36 @@
 from keras.models import model_from_json
 
 
+# class to use
+class LoveBreakupClf:
+    def __init__(self):
+        clf = model_from_json(open('LoveBreakupClf.json').read())
+        clf.load_weights('LoveBreakupClf.h5')
+        clf.compile(loss='sparse_categorical_crossentropy',
+                    optimizer='sgd')
+
+    def predict(self, vec):
+        X_test = [vec]
+        prediction = self.clf.predict_classes(X_test)
+        return generatePredict(prediction)
+
+    def generatePredict(aClass):
+        if aClass == 2:
+            return "失恋"
+        elif aClass == 1:
+            return "恋爱中"
+        elif aClass == 0:
+            return "无关"
+        else:
+            return "无关"
+
+
 def main():
     # Load test set
 
     testList = ['./vec/Love0623-1251.vec', './vec/Breakup0623-1079.vec']
     X_test = toArray(testList)
     # Load model
-    # clf = pickle.load('LoveBreakupClf.pkl')
-    # clf = joblib.load("LoveBreakupClf.pkl")
     clf = model_from_json(open('LoveBreakupClf.json').read())
     clf.load_weights('LoveBreakupClf.h5')
     clf.compile(loss='sparse_categorical_crossentropy',
@@ -52,29 +74,3 @@ def generatePredict(aList):
 
 if __name__ == "__main__":
     main()
-
-
-# class HobbyClassifier:
-#     def __init__(self):
-#         self.clf = joblib.load('hobby.pkl')
-
-#         self.hobbyfilter = lambda x: "喜好" if x == 0 else "非喜好"
-
-#     def predict(self, vec):
-#         X_test = [vec]
-#         pred =  self.clf.predict(X_test)
-#         return self.hobbyfilter(pred[0])
-
-# if __name__ == "__main__":
-#     classifier = HobbyClassifier()
-
-#     X_test = []
-#     with open('testlike/like.vec', 'r') as f:
-#         for l in f:
-#             if l.strip() != '' and l.strip() != '\n':
-#                 vec = []
-#                 for x in l.split(','):
-#                     vec.append(float(x))
-#                 X_test.append(vec)
-#     for x in X_test:
-#         print classifier.predict(x)
