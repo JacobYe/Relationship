@@ -3,7 +3,7 @@
 import requests
 import json
 
-w2vUrl = "http://192.168.1.27:8080/conversation/rest/word2vec/sentencevec?src="
+w2vUrl = "http://192.168.1.126:8085/cuservice/rest/word2vec/sentencevec?src="
 
 wvDict = {
     "./csv/Breakup0622-2327.csv": "./vec/Breakup0622-2327.vec",
