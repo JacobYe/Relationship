@@ -18,7 +18,7 @@ def main():
         './EditorialVec/Divorce0622-46.vec': 6
     }
     testDict = {
-        './PMVec/Single0623-843': 1,
+        './PMVec/Single0623-843.vec': 1,
         './PMVec/Crush0623-850.vec': 2,
         './PMVec/Love0623-1251.vec': 3,
         './PMVec/Breakup0623-1079.vec': 4,
@@ -43,7 +43,7 @@ def main():
     clf.add(Activation("relu"))
     clf.add(Dropout(0.5))
     # Output Layer
-    clf.add(Dense(output_dim=3, init='uniform'))
+    clf.add(Dense(output_dim=7, init='uniform'))
     clf.add(Activation("softmax"))
     clf.compile(loss='sparse_categorical_crossentropy',
                 optimizer='sgd',
@@ -62,6 +62,10 @@ def toArray(aDict):
     for k, v in aDict.iteritems():
         with open(k, 'r') as f:
             for l in f:
+                print l
+                print (l.strip() is 'None')
+                if l.strip() == 'None':
+                    continue
                 if l.strip() != '' and l.strip() != '\n':
                     vec = []
                     for x in l.split(','):

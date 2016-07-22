@@ -9,13 +9,13 @@ from keras.layers import Dense, Activation, Dropout
 def main():
     # Load Dataset
     trainDict = {
-        './vec/NotA0622-4221.vec': 0,
-        './vec/Love0622-2100.vec': 1,
-        './vec/Breakup0622-2327.vec': 2
+        './EditorialVec/NotA0622-4221.vec': 0,
+        './EditorialVec/Love0622-2100.vec': 1,
+        './EditorialVec/Breakup0622-2327.vec': 2
     }
     testDict = {
-        './vec/Love0623-1251.vec': 1,
-        './vec/Breakup0623-1079.vec': 2
+        './PMVec/Love0623-1251.vec': 1,
+        './PMVec/Breakup0623-1079.vec': 2
     }
     X_train, y_train = toArray(trainDict)
     X_test, y_test = toArray(testDict)
