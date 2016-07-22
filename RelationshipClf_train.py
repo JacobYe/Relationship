@@ -14,16 +14,16 @@ def main():
         './EditorialVec/Crush0622-391.vec': 2,
         './EditorialVec/Love0622-2100.vec': 3,
         './EditorialVec/Breakup0622-2327.vec': 4,
-        './EditorialVec/Marriage0622-715.vec': 5,
-        './EditorialVec/Divorce0622-46.vec': 6
+        './PMVec/Marriage0623-906.vec': 5,
+        './PMVec/Divorce0623-750.vec': 6
     }
     testDict = {
         './PMVec/Single0623-843.vec': 1,
         './PMVec/Crush0623-850.vec': 2,
         './PMVec/Love0623-1251.vec': 3,
         './PMVec/Breakup0623-1079.vec': 4,
-        './PMVec/Marriage0623-906.vec': 5,
-        './PMVec/Divorce0623-750.vec': 6
+        './EditorialVec/Marriage0622-715.vec': 5,
+        './EditorialVec/Divorce0622-46.vec': 6
     }
     X_train, y_train = toArray(trainDict)
     X_test, y_test = toArray(testDict)
