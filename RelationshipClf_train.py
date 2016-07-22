@@ -62,8 +62,6 @@ def toArray(aDict):
     for k, v in aDict.iteritems():
         with open(k, 'r') as f:
             for l in f:
-                print l
-                print (l.strip() is 'None')
                 if l.strip() == 'None':
                     continue
                 if l.strip() != '' and l.strip() != '\n':
