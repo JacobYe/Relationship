@@ -43,16 +43,16 @@ def main():
     clf.add(Activation("relu"))
     clf.add(Dropout(0.5))
     # Layer 5
-    clf.add(Dense(output_dim=256, init='uniform'))
+    clf.add(Dense(output_dim=128, init='uniform'))
     clf.add(Activation("relu"))
     # Layer 6
-    clf.add(Dense(output_dim=256, init='uniform'))
+    clf.add(Dense(output_dim=128, init='uniform'))
     clf.add(Activation("relu"))
     # Layer 7
-    clf.add(Dense(output_dim=256, init='uniform'))
+    clf.add(Dense(output_dim=128, init='uniform'))
     clf.add(Activation("relu"))
     # Layer 8
-    clf.add(Dense(output_dim=128, init='uniform'))
+    clf.add(Dense(output_dim=64, init='uniform'))
     clf.add(Activation("relu"))
     # Output Layer
     clf.add(Dense(output_dim=7, init='uniform'))
