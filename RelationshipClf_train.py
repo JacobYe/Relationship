@@ -19,7 +19,7 @@ def main():
     }
     testDict = {
         './PMVec/Single0623-843': 1,
-        './PMVec/Crush0623-850.vec': 2,
+	'./PMVec/Crush0623-850.vec': 2,
         './PMVec/Love0623-1251.vec': 3,
         './PMVec/Breakup0623-1079.vec': 4,
         './PMVec/Marriage0623-906.vec': 5,
