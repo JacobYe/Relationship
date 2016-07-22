@@ -6,22 +6,26 @@ import json
 w2vUrl = "http://192.168.1.126:8085/cuservice/rest/word2vec/sentencevec?src="
 
 wvDict = {
-    "./csv/Breakup0622-2327.csv": "./vec/Breakup0622-2327.vec",
-    "./csv/Breakup0623-1079.csv": "./vec/Breakup0623-1079.vec",
-    "./csv/Crush0622-391.csv": "./vec/Crush0622-391.vec",
-    "./csv/Crush0623-850.csv": "./vec/Crush0623-850.vec",
-    "./csv/Divorce0622-46.csv": "./vec/Divorce0622-46.vec",
-    "./csv/Divorce0623-750.csv": "./vec/Divorce0623-750.vec",
-    "./csv/Love0622-2100.csv": "./vec/Love0622-2100.vec",
-    "./csv/Love0623-1251.csv": "./vec/Love0623-1251.vec",
-    "./csv/Marriage0622-715.csv": "./vec/Marriage0622-715.vec",
-    "./csv/Marriage0623-906.csv": "./vec/Marriage0623-906.vec",
-    "./csv/NotA0622-4221.csv": "./vec/NotA0622-4221.vec",
-    "./csv/NotDBA0622-16.csv": "./vec/NotDBA0622-16.vec",
-    "./csv/NotDBQ0622-3604.csv": "./vec/NotDBQ0622-3604.vec",
-    "./csv/NotQ0622-3051.csv": "./vec/NotQ0622-3051.vec",
-    "./csv/Single0622-615.csv": "./vec/Single0622-615.vec",
-    "./csv/Single0623-843.csv": "./vec/Single0623-843.vec"
+    # Badcases: 0722
+    "./Badcases/Single.txt": "./BadcasesVec/Single.vec",
+    # Editorial: 0722
+    "./Editorial/Breakup0622-2327.csv": "./EditorialVec/Breakup0622-2327.vec",
+    "./Editorial/Crush0622-391.csv": "./EditorialVec/Crush0622-391.vec",
+    "./Editorial/Divorce0622-46.csv": "./EditorialVec/Divorce0622-46.vec",
+    "./Editorial/Love0622-2100.csv": "./EditorialVec/Love0622-2100.vec",
+    "./Editorial/Marriage0622-715.csv": "./EditorialVec/Marriage0622-715.vec",
+    "./Editorial/NotA0622-4221.csv": "./EditorialVec/NotA0622-4221.vec",
+    "./Editorial/NotDBA0622-16.csv": "./EditorialVec/NotDBA0622-16.vec",
+    "./Editorial/NotDBQ0622-3604.csv": "./EditorialVec/NotDBQ0622-3604.vec",
+    "./Editorial/NotQ0622-3051.csv": "./EditorialVec/NotQ0622-3051.vec",
+    "./Editorial/Single0622-615.csv": "./EditorialVec/Single0622-615.vec",
+    # PM: 0722
+    "./PM/Breakup0623-1079.csv": "./PMVec/Breakup0623-1079.vec",
+    "./PM/Crush0623-850.csv": "./PMVec/Crush0623-850.vec",
+    "./PM/Divorce0623-750.csv": "./PMVec/Divorce0623-750.vec",
+    "./PM/Love0623-1251.csv": "./PMVec/Love0623-1251.vec",
+    "./PM/Marriage0623-906.csv": "./PMVec/Marriage0623-906.vec",
+    "./PM/Single0623-843.csv": "./PMVec/Single0623-843.vec"
 }
 
 for k, v in wvDict.iteritems():
