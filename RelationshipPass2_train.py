@@ -30,20 +30,20 @@ def main():
     clf = Sequential()
     # Layer 1
     clf.add(Dense(output_dim=256, input_dim=300, init='uniform'))
-    clf.add(Activation("relu"))
+    clf.add(Activation("sigmoid"))
     # Layer 2
     clf.add(Dense(output_dim=256, init='uniform'))
-    clf.add(Activation("relu"))
+    clf.add(Activation("sigmoid"))
     # Layer 3
     clf.add(Dense(output_dim=256, init='uniform'))
-    clf.add(Activation("relu"))
+    clf.add(Activation("sigmoid"))
     # Layer 4
     clf.add(Dense(output_dim=128, init='uniform'))
-    clf.add(Activation("relu"))
+    clf.add(Activation("sigmoid"))
     clf.add(Dropout(0.5))
     # Layer 5
     clf.add(Dense(output_dim=128, init='uniform'))
-    clf.add(Activation("relu"))
+    clf.add(Activation("sigmoid"))
     # Layer 6
     # clf.add(Dense(output_dim=64, init='uniform'))
     # clf.add(Activation("relu"))
@@ -55,7 +55,7 @@ def main():
                 metrics=['accuracy'])
     clf.fit(X_train, y_train,
             batch_size=32,
-            nb_epoch=150,
+            nb_epoch=200,
             # validation_split=0.7,
             shuffle=True)
     score = clf.evaluate(X_test, y_test, batch_size=32, verbose=1)
