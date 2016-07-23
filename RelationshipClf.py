@@ -20,7 +20,7 @@ class RelationshipClf:
     def __init__(self, modelRoot):
         modelFile = modelRoot + '/RelationshipClf.json'
         logging.info("model file " + modelFile)
-        weightFile = modelRoot + '/Relationship.h5'
+        weightFile = modelRoot + '/RelationshipClf.h5'
         logging.info("weight file " + weightFile)
         if modelRoot is None or not os.path.exists(modelFile) or not os.path.exists(weightFile):
             return
