@@ -46,8 +46,6 @@ def main():
     clf.add(Activation("relu"))
     clf.add(Dense(output_dim=128, init='uniform'))
     clf.add(Activation("relu"))
-    clf.add(Dense(output_dim=128, init='uniform'))
-    clf.add(Activation("relu"))
     # Layer 6
     clf.add(Dense(output_dim=64, init='uniform'))
     clf.add(Activation("relu"))
