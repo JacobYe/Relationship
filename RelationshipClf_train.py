@@ -9,7 +9,6 @@ from keras.layers import Dense, Activation, Dropout
 def main():
     # Load Dataset
     trainDict = {
-        './EditorialVec/NotA0622-4221.vec': 0,
         './EditorialVec/Single0622-615.vec': 1,
         './EditorialVec/Crush0622-391.vec': 2,
         './EditorialVec/Love0622-2100.vec': 3,
