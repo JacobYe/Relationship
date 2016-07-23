@@ -39,7 +39,7 @@ class RelationshipPass2:
         elif aClass == 4:
             return "失恋"
         elif aClass == 3:
-            return "恋爱"
+            return "恋爱中"
         elif aClass == 2:
             return "暗恋"
         elif aClass == 1:
