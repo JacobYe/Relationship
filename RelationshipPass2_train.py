@@ -50,7 +50,7 @@ def main():
     # Output Layer
     clf.add(Dense(output_dim=6, init='uniform'))
     clf.add(Activation("softmax"))
-    clf.compile(loss='categorical_crossentropy',
+    clf.compile(loss='sparse_categorical_crossentropy',
                 optimizer='rmsprop',
                 metrics=['accuracy'])
     clf.fit(X_train, y_train,
