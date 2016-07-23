@@ -57,8 +57,8 @@ def main():
     score = clf.evaluate(X_test, y_test, batch_size=32, verbose=1)
     print score
     clfJson = clf.to_json()
-    open('RelationshipClf.json', 'w').write(clfJson)
-    clf.save_weights('RelationshipClf.h5', overwrite=True)
+    open('RelationshipPass2.json', 'w').write(clfJson)
+    clf.save_weights('RelationshipPass2.h5', overwrite=True)
 
 
 def toArray(aDict):
