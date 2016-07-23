@@ -12,15 +12,15 @@ from keras.models import model_from_json
 
 
 # class to use
-class RelationshipClf:
+class RelationshipPass2:
 
     # model is load successfully
     isLoad = False
 
     def __init__(self, modelRoot):
-        modelFile = modelRoot + '/RelationshipClf.json'
+        modelFile = modelRoot + '/RelationshipPass2.json'
         logging.info("model file " + modelFile)
-        weightFile = modelRoot + '/RelationshipClf.h5'
+        weightFile = modelRoot + '/RelationshipPass2.h5'
         logging.info("weight file " + weightFile)
         if modelRoot is None or not os.path.exists(modelFile) or not os.path.exists(weightFile):
             return
@@ -44,10 +44,8 @@ class RelationshipClf:
             return "暗恋"
         elif aClass == 1:
             return "单身"
-        elif aClass == 0:
-            return "无关"
         else:
-            return "无关"
+            return "单身"
 
     def predict(self, vec):
         if not self.isLoad:
@@ -61,52 +59,7 @@ class RelationshipClf:
 
 
 def main():
-    # Load test set
-
-    testList = ['./vec/Love0623-1251.vec', './vec/Breakup0623-1079.vec']
-    X_test = toArray(testList)
-    # Load model
-    clf = model_from_json(open('LoveBreakupClf.json').read())
-    clf.load_weights('LoveBreakupClf.h5')
-    clf.compile(loss='sparse_categorical_crossentropy',
-                optimizer='sgd')
-    prediction = clf.predict_classes(X_test, batch_size=32, verbose=1)
-    print prediction
-    labels = generatePredict(prediction)
-    print labels
-
-
-def toArray(aList):
-    xList = []
-    for i in aList:
-        with open(i, 'r') as f:
-            for l in f:
-                if l.strip() != '' and l.strip() != '\n':
-                    vec = []
-                    for x in l.split(','):
-                        vec.append(float(x))
-                    xList.append(vec)
-    return xList
-
-
-def generatePredict(aList):
-    labels = []
-    for i in aList:
-        if i == 0:
-            labels.append("无关")
-        elif i == 1:
-            labels.append("单身")
-        elif i == 2:
-            labels.append("暗恋")
-        elif i == 3:
-            labels.append("恋爱")
-        elif i == 4:
-            labels.append("失恋")
-        elif i == 5:
-            labels.append("结婚")
-        elif i == 6:
-            labels.append("离婚")
-    return labels
+    pass
 
 if __name__ == "__main__":
     main()
