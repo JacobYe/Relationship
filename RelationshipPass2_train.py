@@ -56,7 +56,7 @@ def main():
     clf.fit(X_train, y_train,
             batch_size=32,
             nb_epoch=800,
-            validation_split=0.7,
+            # validation_split=0.7,
             shuffle=True)
     score = clf.evaluate(X_test, y_test, batch_size=32, verbose=1)
     print score
