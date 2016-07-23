@@ -53,7 +53,7 @@ def main():
     clf.compile(loss='sparse_categorical_crossentropy',
                 optimizer='sgd',
                 metrics=['accuracy'])
-    clf.fit(X_train, y_train, batch_size=32, nb_epoch=500)
+    clf.fit(X_train, y_train, batch_size=32, nb_epoch=500, validation_split=0.7)
     score = clf.evaluate(X_test, y_test, batch_size=32, verbose=1)
     print score
     clfJson = clf.to_json()
