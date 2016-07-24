@@ -2,17 +2,36 @@
 
 This is a project using Machine Learning / Deep Learning techniques to classify users' relationship status
 
-## Structure
+## Project Structure
 
-- csv
-    Directory for the source files
-- vec
-    Directory for the word2vec files
+- Badcases
+    Dataset: User Generated Content
+- BadcasesVec
+    Vectors: Badcases Dataset
+- Editorial
+    Dataset: Editorial Content
+- EditorialVec
+    Vectors: Editorial Dataset
+- PM
+    Dataset: PM Generated Content
+- PMVec
+    Vectors: PM Dataset
+
+## Classes
+
+- Not Related
+- Single
+- Crush
+- Love
+- Breakup
+- Marriage
+- Divorce
+
+## Scripts
+
 - w2v.py
-    Python script to convert source files to w2v files
+    For converting sentences to sentence vectors
+- LoveBreak
+- RelationshipPass1
+- RelationshipPass2
 
-## Todo
-
-- Deep learning model using Keras
-    - Training py
-    - Testing py
