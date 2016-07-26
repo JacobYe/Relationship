@@ -26,7 +26,13 @@ def main():
     }
     testDict = {
         './EditorialVec/NotDBA0622-16.vec': 0,
-        './EditorialVec/NotQ0622-3051.vec': 0
+        './EditorialVec/NotQ0622-3051.vec': 0,
+        './TestVec/Breakup0730-100.vec': 1,
+        './TestVec/Crush0730-100.vec': 1,
+        './TestVec/Divorce0730-100.vec': 1,
+        './TestVec/Love0730-100.vec': 1,
+        './TestVec/Marriage0730-100.vec': 1,
+        './TestVec/Single0730-100.vec': 1
     }
     X_train, y_train = toArray(trainDict)
     X_test, y_test = toArray(testDict)
