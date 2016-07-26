@@ -3,7 +3,8 @@
 import requests
 import json
 
-w2vUrl = "http://192.168.1.126:8085/cuservice/rest/word2vec/sentencevec?src="
+# w2vUrl = "http://192.168.1.126:8085/cuservice/rest/word2vec/sentencevec?src="
+w2vUrl = "http://192.168.1.133:8085/cuservice/rest/word2vec/sentencevec?src="
 
 wvDict = {
     # Badcases: 0726
@@ -26,16 +27,16 @@ wvDict = {
     # "./PM/Love0623-1251.csv": "./PMVec/Love0623-1251.vec",
     # "./PM/Marriage0623-906.csv": "./PMVec/Marriage0623-906.vec",
     # "./PM/Single0623-843.csv": "./PMVec/Single0623-843.vec",
-    # "./PM/Crush0725-602.csv" : "./PMVec/Crush0725-602.csv",
-    # "./PM/Divorce0725-600.csv" : "./PMVec/Divorce0725-600.csv",
-    # "./PM/Single0725-606.csv" : "./PMVec/Single0725-606.csv",
+    "./PM/Crush0725-602.csv": "./PMVec/Crush0725-602.vec",
+    "./PM/Divorce0725-600.csv": "./PMVec/Divorce0725-600.vec",
+    "./PM/Single0725-606.csv": "./PMVec/Single0725-606.vec",
     # Test: 0726
-    "./Test/Breakup0730-100.csv": "./TestVec/Breakup0730-100.vec",
-    "./Test/Crush0730-100.csv": "./TestVec/Crush0730-100.vec",
-    "./Test/Divorce0730-100.csv": "./TestVec/Divorce0730-100.vec",
-    "./Test/Love0730-100.csv": "./TestVec/Love0730-100.vec",
-    "./Test/Marriage0730-100.csv": "./TestVec/Marriage0730-100.vec",
-    "./Test/Single0730-100.csv": "./TestVec/Single0730-100.vec"
+    # "./Test/Breakup0730-100.csv": "./TestVec/Breakup0730-100.vec",
+    # "./Test/Crush0730-100.csv": "./TestVec/Crush0730-100.vec",
+    # "./Test/Divorce0730-100.csv": "./TestVec/Divorce0730-100.vec",
+    # "./Test/Love0730-100.csv": "./TestVec/Love0730-100.vec",
+    # "./Test/Marriage0730-100.csv": "./TestVec/Marriage0730-100.vec",
+    # "./Test/Single0730-100.csv": "./TestVec/Single0730-100.vec"
 }
 
 for k, v in wvDict.iteritems():
