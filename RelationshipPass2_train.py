@@ -60,8 +60,8 @@ def main():
     clf.add(Dense(output_dim=128, init='uniform'))
     clf.add(Activation("sigmoid"))
     # Layer 6
-    # clf.add(Dense(output_dim=64, init='uniform'))
-    # clf.add(Activation("relu"))
+    clf.add(Dense(output_dim=64, init='uniform'))
+    clf.add(Activation("relu"))
     # Output Layer
     clf.add(Dense(output_dim=6, init='uniform'))
     clf.add(Activation("softmax"))
