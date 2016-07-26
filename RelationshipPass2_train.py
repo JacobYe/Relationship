@@ -12,7 +12,7 @@ def main():
         # Single
         './EditorialVec/Single0622-615.vec': 1,
         './PMVec/Single0623-843.vec': 1,
-        './PMVec/Single0725-606.vec'
+        './PMVec/Single0725-606.vec': 1,
         # Crush
         './EditorialVec/Crush0622-391.vec': 2,
         './PMVec/Crush0623-850.vec': 2,
@@ -37,7 +37,7 @@ def main():
         './TestVec/Divorce0730-100.vec': 6,
         './TestVec/Love0730-100.vec': 3,
         './TestVec/Marriage0730-100.vec': 5,
-        './TestVec/Single0730-100.vec': 1,
+        './TestVec/Single0730-100.vec': 1
     }
     X_train, y_train = toArray(trainDict)
     X_test, y_test = toArray(testDict)
